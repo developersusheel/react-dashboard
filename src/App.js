@@ -1,5 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {gsap} from 'gsap';
+import React from 'react';
+import { useContext } from "react";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
@@ -8,11 +8,14 @@ import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { userInputs, productInputs } from './formSource';
 import "./style/dark.scss"; 
+import { DarkModeContext } from "./context/darkModeContext";
+
 
 function App() {
-  // const [dark, setDark] = useState(false);
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <div className={"app"}>
+    <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
           <Route path='/'>
